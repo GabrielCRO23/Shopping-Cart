@@ -5,3 +5,23 @@ html {
 body {
   background: black;
 }
+
+.cartButton {
+  text-align: center;
+  white-space: nowrap;
+  margin: auto;
+  color: #76b900;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+}
+
+.priceTag {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  color: white;
+}
