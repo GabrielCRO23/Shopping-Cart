@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "price": 1499.0,
+        "model": "RTX3090",
+        "source": "/images/RTX3090.png"
+    },
+    {
+        "id": 2,
+        "price": 1299.0,
+        "model": "RTX3080",
+        "source":  "/images/RTX3080.png"
+    }
+]
