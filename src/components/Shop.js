@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import products from "../data/products.json";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Product from "./Product";
 import Typography from "@mui/material/Typography";
-
+console.log(products);
 function Shop({ cart, setCart }) {
   const [isActive, setIsActive] = useState(false);
+
+  const [items, setItems] = useState();
   function handleCart(event) {
     setCart(cart + 1);
     setIsActive((current) => !current);
@@ -14,7 +16,8 @@ function Shop({ cart, setCart }) {
     event.currentTarget.textContent = "Added to Cart";
     event.currentTarget.style.color = "#666666";
   }
-  // got this from stackoverflow - compares all the values of a property, sorts the lowest ones to the bottom and highest ones to the top of the list
+
+  // got this from stackoverflow - compares all the values of a property, sorts the lowest ones to the top and highest ones to the bottom of the list
   function sortByProperty(property) {
     return function (a, b) {
       if (a[property] > b[property]) return 1;
@@ -23,8 +26,16 @@ function Shop({ cart, setCart }) {
     };
   }
 
-  const sortedProducts = products.sort(sortByProperty("price")).reverse();
-  console.log(sortedProducts);
+  // sort the products by price lowest to highest
+  function sortProducts() {
+    setItems([...products], products.sort(sortByProperty("price")));
+    console.log(products);
+  }
+  // sort the products by price highest to lowest
+  function sortProductsReverse() {
+    setItems([...products], products.sort(sortByProperty("price")).reverse());
+    console.log(products);
+  }
 
   return (
     <Grid
@@ -48,7 +59,12 @@ function Shop({ cart, setCart }) {
           </Grid>
         </React.Fragment>
       ))}
-      <Button variant="contained">Click me!</Button>
+      <Button variant="contained" onClick={sortProducts}>
+        Click me!
+      </Button>
+      <Button variant="contained" onClick={sortProductsReverse}>
+        Click me!
+      </Button>
     </Grid>
   );
 }
