@@ -8,7 +8,7 @@ function Header({ cart }) {
   return (
     <div>
       <AppBar
-        position="absolute"
+        position="fixed"
         sx={{
           backgroundColor: "white",
           display: "flex",

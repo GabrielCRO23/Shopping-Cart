@@ -32,6 +32,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <div className="App">
           <Header cart={cart} />
+
           <Shop cart={cart} setCart={setCart} />
         </div>
       </ThemeProvider>

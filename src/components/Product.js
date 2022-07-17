@@ -12,7 +12,6 @@ function Product({ id, price, model, source }) {
         ${price}.
         <span style={{ fontSize: "12px", verticalAlign: "3px" }}>99</span>
       </Typography>
-      <button className="cartButton">Add to Cart</button>
     </div>
   );
 }
