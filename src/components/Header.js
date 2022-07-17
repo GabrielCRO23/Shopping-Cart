@@ -8,18 +8,21 @@ function Header({ cart }) {
   return (
     <div>
       <AppBar
-        position="fixed"
+        position="absolute"
         sx={{
-          backgroundColor: "primary",
+          backgroundColor: "white",
           display: "flex",
           flexDirection: "row",
           justifyContent: { md: "flex-end", xs: "center" },
         }}
       >
         <Toolbar variant="dense">
-          <Button color="secondary">Home</Button>
-          <Button color="secondary">Products</Button>
-          <Button color="secondary" startIcon={<ShoppingCartOutlinedIcon />}>
+          <Button sx={{ color: "#666666" }}>Home</Button>
+          <Button sx={{ color: "#666666" }}>Products</Button>
+          <Button
+            sx={{ color: "#666666" }}
+            startIcon={<ShoppingCartOutlinedIcon />}
+          >
             {cart}
           </Button>
         </Toolbar>

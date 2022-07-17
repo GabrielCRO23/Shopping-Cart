@@ -1,14 +1,57 @@
 [
     {
         "id": 1,
+        "price": 1999.0,
+        "model": "RTX3090 TI",
+        "source": "/images/RTX3090TI.png"
+    },
+    {
+        "id": 2,
+        "price": 1199.0,
+        "model": "RTX3080 TI",
+        "source":  "/images/RTX3080TI.png"
+    },
+    {
+        "id": 3,
+        "price": 599.0,
+        "model": "RTX3070 TI",
+        "source": "/images/RTX3070TI.png"
+    },
+    {
+        "id": 4,
         "price": 1499.0,
         "model": "RTX3090",
         "source": "/images/RTX3090.png"
     },
     {
-        "id": 2,
-        "price": 1299.0,
-        "model": "RTX3080",
-        "source":  "/images/RTX3080.png"
+        "id": 5,
+        "price": 2099.0,
+        "model": "3090TI AMP",
+        "source": "/images/RTX3090TIAMP.png"
+    },
+    {
+        "id": 6,
+        "price": 499.0,
+        "model": "RTX3070",
+        "source": "/images/RTX3070.png"
+    },
+    {
+        "id": 7,
+        "price": 929.0,
+        "model": "RTX 3080 REVEL",
+        "source": "/images/RTX3080REVEL.png"
+    },
+    {
+        "id": 8,
+        "price": 599.0,
+        "model": "RTX3060 TI",
+        "source": "/images/RTX3060TI.png"
+    },
+    {
+        "id": 9,
+        "price": 5249.0,
+        "model": "MSI RTX3090 TI",
+        "source": "/images/RTXMSI3090TI.png"
     }
+ 
 ]

@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Shop from "./components/Shop";
 import Header from "./components/Header";
 import { useState } from "react";
+import Container from "@mui/material/Container";
 
 let theme = createTheme({
   palette: {
@@ -27,13 +28,14 @@ function App() {
   const [cart, setCart] = useState(0);
 
   return (
-    <ThemeProvider theme={theme}>
-      <div className="App">
-        <Header cart={cart} />
-
-        <Shop cart={cart} setCart={setCart} />
-      </div>
-    </ThemeProvider>
+    <Container maxWidth="xl">
+      <ThemeProvider theme={theme}>
+        <div className="App">
+          <Header cart={cart} />
+          <Shop cart={cart} setCart={setCart} />
+        </div>
+      </ThemeProvider>
+    </Container>
   );
 }
 
