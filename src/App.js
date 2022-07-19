@@ -23,7 +23,6 @@ let theme = createTheme({
 });
 
 theme = responsiveFontSizes(theme);
-
 function App() {
   const [cart, setCart] = useState(0);
 
