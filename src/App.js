@@ -25,6 +25,7 @@ let theme = createTheme({
 theme = responsiveFontSizes(theme);
 function App() {
   const [cart, setCart] = useState(0);
+  const [price, setPrice] = useState(0);
 
   return (
     <Container maxWidth="xl">
@@ -32,7 +33,12 @@ function App() {
         <div className="App">
           <Header cart={cart} />
 
-          <Shop cart={cart} setCart={setCart} />
+          <Shop
+            cart={cart}
+            setCart={setCart}
+            price={price}
+            setPrice={setPrice}
+          />
         </div>
       </ThemeProvider>
     </Container>

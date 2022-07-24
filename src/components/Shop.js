@@ -19,7 +19,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
-function Shop({ cart, setCart }) {
+function Shop({ cart, setCart, price, setPrice }) {
   const [isActive, setIsActive] = useState(false);
 
   const [items, setItems] = useState(products);
@@ -58,36 +58,53 @@ function Shop({ cart, setCart }) {
       <Box sx={{ display: "flex" }}>
         <Drawer
           sx={{
-            display: "none",
-            zIndex: -1,
+            zIndex: 0,
             position: "relative",
             width: "20%",
             flexShrink: 0,
             "& .MuiDrawer-paper": {
-              backgroundColor: "white",
+              backgroundColor: "black",
+              color: "white",
               width: "20%",
             },
           }}
           variant="permanent"
           anchor="left"
         >
-          <List>
-            <ListItem disablePadding>
-              <ListItemButton>Hello</ListItemButton>
-            </ListItem>
-          </List>
-          <List>
-            {["All mail", "Trash", "Spam"].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
+          <Typography
+            align="center"
+            sx={{ marginTop: "5rem", fontWeight: "700" }}
+          >
+            Sort By Price:
+          </Typography>
+          <Button onClick={sortProducts}>Lowest to Highest</Button>
+          <Button onClick={sortProductsReverse}>Highest to Lowest</Button>
+          <Divider color="white" />
+          <Box
+            sx={{
+              display: "flex",
+
+              margin: "2rem",
+            }}
+          >
+            <Typography sx={{ fontWeight: "700", textAlign: "center" }}>
+              Cart
+            </Typography>
+            <Typography
+              sx={{
+                fontWeight: "700",
+                marginLeft: "auto",
+                marginRight: "1rem",
+              }}
+            >
+              {cart}
+            </Typography>
+            <Divider orientation="vertical" color="white" flexItem></Divider>
+            <Typography sx={{ marginLeft: "1rem" }}>
+              ${price.toFixed(2)}
+            </Typography>
+          </Box>
+          <Divider color="white" />
         </Drawer>
 
         <Grid
@@ -102,7 +119,7 @@ function Shop({ cart, setCart }) {
         >
           {products.map((product) => (
             <React.Fragment key={product.id}>
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid key={product.id} item xs={12} sm={12} md={6} lg={4}>
                 <Product {...product} />
                 <button
                   style={{
@@ -110,7 +127,10 @@ function Shop({ cart, setCart }) {
                     margin: "auto",
                   }}
                   className="cartButton"
-                  onClick={(event) => handleCart(event)}
+                  onClick={(event) => {
+                    handleCart(event);
+                    setPrice(price + product.price + 0.99);
+                  }}
                 >
                   Add to Cart
                 </button>
