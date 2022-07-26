@@ -8,7 +8,7 @@ import {
 import Home from "./components/Home";
 import Shop from "./components/Shop";
 import Header from "./components/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Container from "@mui/material/Container";
 
 let theme = createTheme({

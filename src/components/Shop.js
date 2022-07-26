@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import products from "../data/products.json";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
@@ -21,15 +21,26 @@ import MailIcon from "@mui/icons-material/Mail";
 
 function Shop({ cart, setCart, price, setPrice }) {
   const [isActive, setIsActive] = useState(false);
-
+  let [animation, setAnimation] = useState(0);
+  const [toggle, setToggle] = useState(false);
   const [items, setItems] = useState(products);
   function handleCart(event) {
     setCart(cart + 1);
     setIsActive((current) => !current);
+    setAnimation(0);
     event.currentTarget.disabled = true;
     event.currentTarget.textContent = "Added to Cart";
     event.currentTarget.style.color = "#666666";
+    event.currentTarget.style.cursor = "default";
   }
+
+  useEffect(() => {
+    setAnimation(1);
+  }, [cart]);
+
+  const renderAnimations = () => {
+    return toggle ? setAnimation(2) : setAnimation(1);
+  };
 
   // got this from stackoverflow - compares all the values of a property, sorts the lowest ones to the top and highest ones to the bottom of the list
   function sortByProperty(property) {
@@ -44,12 +55,10 @@ function Shop({ cart, setCart, price, setPrice }) {
 
   function sortProducts() {
     setItems([...products], products.sort(sortByProperty("price")));
-    console.log(products);
   }
   // sort the products by price highest to lowest
   function sortProductsReverse() {
     setItems([...products], products.sort(sortByProperty("price")).reverse());
-    console.log(products);
   }
 
   //justifyContent: { md: "flex-end", xs: "center" },
@@ -83,7 +92,7 @@ function Shop({ cart, setCart, price, setPrice }) {
           <Box
             sx={{
               display: "flex",
-
+              justifyContent: "center",
               margin: "2rem",
             }}
           >
@@ -91,16 +100,30 @@ function Shop({ cart, setCart, price, setPrice }) {
               Cart
             </Typography>
             <Typography
+              className={"drawer-cart"}
+              animation={animation}
               sx={{
+                display: "flex",
+
                 fontWeight: "700",
-                marginLeft: "auto",
+                marginLeft: "1rem",
                 marginRight: "1rem",
               }}
             >
               {cart}
             </Typography>
-            <Divider orientation="vertical" color="white" flexItem></Divider>
-            <Typography sx={{ marginLeft: "1rem" }}>
+            <Divider
+              className={"drawer-cart"}
+              animation={animation}
+              orientation="vertical"
+              color="white"
+              flexItem
+            ></Divider>
+            <Typography
+              className={"drawer-cart"}
+              animation={animation}
+              sx={{ marginLeft: "1rem" }}
+            >
               ${price.toFixed(2)}
             </Typography>
           </Box>
