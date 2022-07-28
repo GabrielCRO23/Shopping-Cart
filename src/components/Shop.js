@@ -22,24 +22,27 @@ import MailIcon from "@mui/icons-material/Mail";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 function Shop({ cart, setCart, price, setPrice }) {
   let [animation, setAnimation] = useState(0);
-  const [toggle, setToggle] = useState(false);
+
   const [items, setItems] = useState(products);
   const [models, setModels] = useState([]);
 
-  //setCart is for managing the number in the cart items, setAnimation is for setting animation to "0", when it is set to "1" the fade animation will play.
+  //setCart is for managing the number in the cart items
+  //setAnimation is for setting animation to "0", when it is set to "1" the fade animation will play.
   //The events are for the button effects after clicking the buttons
 
   function handleCart(event) {
     setCart(cart + 1);
 
     setAnimation(0);
-    event.currentTarget.disabled = true;
-    event.currentTarget.textContent = "Added to Cart";
-    event.currentTarget.style.color = "#666666";
-    event.currentTarget.style.cursor = "default";
+
+    event.target.disabled = true;
+    event.target.textContent = "Added to Cart";
+    event.target.style.color = "#666666";
+    event.target.style.cursor = "default";
   }
 
   useEffect(() => {
@@ -49,21 +52,35 @@ function Shop({ cart, setCart, price, setPrice }) {
   //takes the index of the quantity value in "models" and adds 1 to it. Also sets cart and price state accordingly.
 
   function addQuantity(index) {
+    setAnimation(0);
     const values = [...models];
     values[index].quantity += 1;
     setModels(values);
     setCart(cart + 1);
-    setPrice(price + values[index].price + 0.99);
+    setPrice(price + values[index].price);
   }
   // takes the index of the quantity value in "models" and removes 1 to it as long as it's greater than 1. Also sets cart and price state accordingly.
   function removeQuantity(index) {
+    setAnimation(0);
     const values = [...models];
     if (values[index].quantity > 1) {
       values[index].quantity -= 1;
       setModels(values);
       setCart(cart - 1);
-      setPrice(price - values[index].price - 0.99);
+      setPrice(price - values[index].price);
     }
+  }
+
+  function removeCartItem(index) {
+    setAnimation(0);
+    const values = [...models];
+    console.log(values[index].quantity);
+    //console.log(values[index].model);
+
+    setModels(values);
+    setCart(cart - 1 * values[index].quantity);
+    setPrice(price - values[index].price * values[index].quantity);
+    values.splice(index, 1);
   }
 
   // got this from stackoverflow - compares all the values of a property, sorts the lowest ones to the top and highest ones to the bottom of the list
@@ -154,20 +171,27 @@ function Shop({ cart, setCart, price, setPrice }) {
           <Divider color="white" />
           {models.map((model, index) => (
             <React.Fragment key={index}>
-              <li>
-                {model.model}
+              <Box sx={{ display: "flex" }}>
                 <Button
-                  onClick={(event) => addQuantity(index)}
-                  sx={{ color: "#fff" }}
-                  startIcon={<AddIcon />}
+                  onClick={(event) => removeCartItem(index)}
+                  startIcon={<HighlightOffIcon />}
                 ></Button>
-                <Button
-                  onClick={(event) => removeQuantity(index)}
-                  sx={{ color: "#fff" }}
-                  startIcon={<RemoveIcon />}
-                ></Button>
-                Quantity: {model.quantity}
-              </li>
+                <li style={{ marginLeft: "auto" }}>
+                  {model.model}
+                  <Button
+                    onClick={(event) => addQuantity(index)}
+                    sx={{ color: "#fff" }}
+                    startIcon={<AddIcon />}
+                  ></Button>
+                  <Button
+                    onClick={(event) => removeQuantity(index)}
+                    sx={{ color: "#fff", width: "20px" }}
+                    startIcon={<RemoveIcon />}
+                  ></Button>
+                  Quantity: {model.quantity}
+                </li>
+              </Box>
+              <Divider color="white" />
             </React.Fragment>
           ))}
         </Drawer>
@@ -192,9 +216,11 @@ function Shop({ cart, setCart, price, setPrice }) {
                     margin: "auto",
                   }}
                   className="cartButton"
+                  name={product.model}
                   onClick={(event) => {
                     handleCart(event);
-                    setPrice(price + product.price + 0.99);
+                    setPrice(price + product.price);
+
                     setModels([
                       ...models,
                       {

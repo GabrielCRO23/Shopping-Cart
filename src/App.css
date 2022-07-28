@@ -26,6 +26,17 @@ body {
   color: white;
 }
 
+li {
+  list-style: none;
+}
+
+.cart-button {
+  color: orange !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-width: 20px !important;
+  line-height: 0 !important;
+}
 
 
 .drawer-cart[animation="1"] {

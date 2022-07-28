@@ -19,7 +19,7 @@ function Product({ id, price, model, source }) {
       </Typography>
       <Typography align="center" color="white">
         ${price}.
-        <span style={{ fontSize: "12px", verticalAlign: "3px" }}>99</span>
+        <span style={{ fontSize: "12px", verticalAlign: "3px" }}>00</span>
       </Typography>
     </div>
   );
