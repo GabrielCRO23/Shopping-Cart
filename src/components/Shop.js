@@ -19,14 +19,28 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
+import DeleteIcon from "@mui/icons-material/Delete";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+
 function Shop({ cart, setCart, price, setPrice }) {
   const [isActive, setIsActive] = useState(false);
+
   let [animation, setAnimation] = useState(0);
   const [toggle, setToggle] = useState(false);
   const [items, setItems] = useState(products);
+  const [models, setModels] = useState([]);
   function handleCart(event) {
     setCart(cart + 1);
     setIsActive((current) => !current);
+    /*
+    setModels([
+      ...models,
+      {
+        model: "",
+      },
+    ]);
+    */
     setAnimation(0);
     event.currentTarget.disabled = true;
     event.currentTarget.textContent = "Added to Cart";
@@ -38,9 +52,19 @@ function Shop({ cart, setCart, price, setPrice }) {
     setAnimation(1);
   }, [cart]);
 
-  const renderAnimations = () => {
-    return toggle ? setAnimation(2) : setAnimation(1);
-  };
+  function addQuantity(index) {
+    const values = [...models];
+    values[index].quantity += 1;
+    setModels(values);
+  }
+
+  function removeQuantity(index) {
+    const values = [...models];
+    if (values[index].quantity > 1) {
+      values[index].quantity -= 1;
+      setModels(values);
+    }
+  }
 
   // got this from stackoverflow - compares all the values of a property, sorts the lowest ones to the top and highest ones to the bottom of the list
   function sortByProperty(property) {
@@ -128,6 +152,24 @@ function Shop({ cart, setCart, price, setPrice }) {
             </Typography>
           </Box>
           <Divider color="white" />
+          {models.map((model, index) => (
+            <React.Fragment key={index}>
+              <li>
+                {model.model}
+                <Button
+                  onClick={(event) => addQuantity(index)}
+                  sx={{ color: "#fff" }}
+                  startIcon={<AddIcon />}
+                ></Button>
+                <Button
+                  onClick={(event) => removeQuantity(index)}
+                  sx={{ color: "#fff" }}
+                  startIcon={<RemoveIcon />}
+                ></Button>
+                Quantity: {model.quantity}
+              </li>
+            </React.Fragment>
+          ))}
         </Drawer>
 
         <Grid
@@ -153,6 +195,14 @@ function Shop({ cart, setCart, price, setPrice }) {
                   onClick={(event) => {
                     handleCart(event);
                     setPrice(price + product.price + 0.99);
+                    setModels([
+                      ...models,
+                      {
+                        model: product.model,
+                        price: product.price,
+                        quantity: 1,
+                      },
+                    ]);
                   }}
                 >
                   Add to Cart
