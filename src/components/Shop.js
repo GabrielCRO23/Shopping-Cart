@@ -24,23 +24,17 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
 function Shop({ cart, setCart, price, setPrice }) {
-  const [isActive, setIsActive] = useState(false);
-
   let [animation, setAnimation] = useState(0);
   const [toggle, setToggle] = useState(false);
   const [items, setItems] = useState(products);
   const [models, setModels] = useState([]);
+
+  //setCart is for managing the number in the cart items, setAnimation is for setting animation to "0", when it is set to "1" the fade animation will play.
+  //The events are for the button effects after clicking the buttons
+
   function handleCart(event) {
     setCart(cart + 1);
-    setIsActive((current) => !current);
-    /*
-    setModels([
-      ...models,
-      {
-        model: "",
-      },
-    ]);
-    */
+
     setAnimation(0);
     event.currentTarget.disabled = true;
     event.currentTarget.textContent = "Added to Cart";
@@ -52,17 +46,23 @@ function Shop({ cart, setCart, price, setPrice }) {
     setAnimation(1);
   }, [cart]);
 
+  //takes the index of the quantity value in "models" and adds 1 to it. Also sets cart and price state accordingly.
+
   function addQuantity(index) {
     const values = [...models];
     values[index].quantity += 1;
     setModels(values);
+    setCart(cart + 1);
+    setPrice(price + values[index].price + 0.99);
   }
-
+  // takes the index of the quantity value in "models" and removes 1 to it as long as it's greater than 1. Also sets cart and price state accordingly.
   function removeQuantity(index) {
     const values = [...models];
     if (values[index].quantity > 1) {
       values[index].quantity -= 1;
       setModels(values);
+      setCart(cart - 1);
+      setPrice(price - values[index].price - 0.99);
     }
   }
 
