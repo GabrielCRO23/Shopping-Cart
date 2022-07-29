@@ -25,11 +25,12 @@ function Shop({ cart, setCart, price, setPrice }) {
     setCart(cart + 1);
 
     setAnimation(0);
-
+    /*
     event.target.disabled = true;
     event.target.textContent = "Added to Cart";
     event.target.style.color = "#666666";
     event.target.style.cursor = "default";
+    */
 
     //If the item is removed from cart, the button will be enabled again.
   }
@@ -64,11 +65,13 @@ function Shop({ cart, setCart, price, setPrice }) {
     setAnimation(0);
     const values = [...models];
 
-    setModels(values);
     setCart(cart - 1 * values[index].quantity);
     setPrice(price - values[index].price * values[index].quantity);
-
+    values[index].quantity = 0;
     values.splice(index, 1);
+
+    setModels(values);
+    console.log(values);
   }
 
   // got this from stackoverflow - compares all the values of a property, sorts the lowest ones to the top and highest ones to the bottom of the list
@@ -194,11 +197,14 @@ function Shop({ cart, setCart, price, setPrice }) {
           }}
           container
         >
-          {products.map((product) => (
-            <React.Fragment key={product.id}>
+          {products.map((product, index) => (
+            <React.Fragment key={index}>
               <Grid key={product.id} item xs={12} sm={12} md={6} lg={4}>
                 <Product {...product} />
                 <button
+                  disabled={models.some(
+                    (models) => models.model === product.model && models.model
+                  )}
                   style={{
                     display: "flex",
                     margin: "auto",
