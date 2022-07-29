@@ -4,22 +4,9 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Product from "./Product";
 import Drawer from "@mui/material/Drawer";
-
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-
-import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
@@ -43,6 +30,8 @@ function Shop({ cart, setCart, price, setPrice }) {
     event.target.textContent = "Added to Cart";
     event.target.style.color = "#666666";
     event.target.style.cursor = "default";
+
+    //If the item is removed from cart, the button will be enabled again.
   }
 
   useEffect(() => {
@@ -74,12 +63,11 @@ function Shop({ cart, setCart, price, setPrice }) {
   function removeCartItem(index) {
     setAnimation(0);
     const values = [...models];
-    console.log(values[index].quantity);
-    //console.log(values[index].model);
 
     setModels(values);
     setCart(cart - 1 * values[index].quantity);
     setPrice(price - values[index].price * values[index].quantity);
+
     values.splice(index, 1);
   }
 
