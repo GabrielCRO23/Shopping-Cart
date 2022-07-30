@@ -10,6 +10,7 @@ import Divider from "@mui/material/Divider";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import ShoppingCart from "./ShoppingCart";
 
 function Shop({ cart, setCart, price, setPrice }) {
   let [animation, setAnimation] = useState(0);
@@ -71,7 +72,6 @@ function Shop({ cart, setCart, price, setPrice }) {
     values.splice(index, 1);
 
     setModels(values);
-    console.log(values);
   }
 
   // got this from stackoverflow - compares all the values of a property, sorts the lowest ones to the top and highest ones to the bottom of the list
@@ -97,95 +97,18 @@ function Shop({ cart, setCart, price, setPrice }) {
   return (
     <>
       <Box sx={{ display: "flex" }}>
-        <Drawer
-          sx={{
-            zIndex: 0,
-            position: "relative",
-            width: "20%",
-            flexShrink: 0,
-            "& .MuiDrawer-paper": {
-              backgroundColor: "black",
-              color: "white",
-              width: "20%",
-            },
-          }}
-          variant="permanent"
-          anchor="left"
-        >
-          <Typography
-            align="center"
-            sx={{ marginTop: "5rem", fontWeight: "700" }}
-          >
-            Sort By Price:
-          </Typography>
-          <Button onClick={sortProducts}>Lowest to Highest</Button>
-          <Button onClick={sortProductsReverse}>Highest to Lowest</Button>
-          <Divider color="white" />
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              margin: "2rem",
-            }}
-          >
-            <Typography sx={{ fontWeight: "700", textAlign: "center" }}>
-              Cart
-            </Typography>
-            <Typography
-              className={"drawer-cart"}
-              animation={animation}
-              sx={{
-                display: "flex",
-
-                fontWeight: "700",
-                marginLeft: "1rem",
-                marginRight: "1rem",
-              }}
-            >
-              {cart}
-            </Typography>
-            <Divider
-              className={"drawer-cart"}
-              animation={animation}
-              orientation="vertical"
-              color="white"
-              flexItem
-            ></Divider>
-            <Typography
-              className={"drawer-cart"}
-              animation={animation}
-              sx={{ marginLeft: "1rem" }}
-            >
-              ${price.toFixed(2)}
-            </Typography>
-          </Box>
-          <Divider color="white" />
-          {models.map((model, index) => (
-            <React.Fragment key={index}>
-              <Box sx={{ display: "flex" }}>
-                <Button
-                  onClick={(event) => removeCartItem(index)}
-                  startIcon={<HighlightOffIcon />}
-                ></Button>
-                <li style={{ marginLeft: "auto" }}>
-                  {model.model}
-                  <Button
-                    onClick={(event) => addQuantity(index)}
-                    sx={{ color: "#fff" }}
-                    startIcon={<AddIcon />}
-                  ></Button>
-                  <Button
-                    onClick={(event) => removeQuantity(index)}
-                    sx={{ color: "#fff", width: "20px" }}
-                    startIcon={<RemoveIcon />}
-                  ></Button>
-                  Quantity: {model.quantity}
-                </li>
-              </Box>
-              <Divider color="white" />
-            </React.Fragment>
-          ))}
-        </Drawer>
+        <ShoppingCart
+          animation={animation}
+          setAnimation={setAnimation}
+          cart={cart}
+          setCart={setCart}
+          price={price}
+          setPrice={setPrice}
+          models={models}
+          setModels={setModels}
+          items={items}
+          setItems={setItems}
+        />
 
         <Grid
           sx={{

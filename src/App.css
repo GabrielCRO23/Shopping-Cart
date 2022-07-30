@@ -38,6 +38,11 @@ li {
   line-height: 0 !important;
 }
 
+button:disabled {
+  color: #666666;
+  cursor: default;
+}
+
 
 .drawer-cart[animation="1"] {
 

@@ -28,20 +28,13 @@ function App() {
   const [price, setPrice] = useState(0);
 
   return (
-    <Container maxWidth="xl">
-      <ThemeProvider theme={theme}>
-        <div className="App">
-          <Header cart={cart} />
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Header cart={cart} />
 
-          <Shop
-            cart={cart}
-            setCart={setCart}
-            price={price}
-            setPrice={setPrice}
-          />
-        </div>
-      </ThemeProvider>
-    </Container>
+        <Shop cart={cart} setCart={setCart} price={price} setPrice={setPrice} />
+      </div>
+    </ThemeProvider>
   );
 }
 
