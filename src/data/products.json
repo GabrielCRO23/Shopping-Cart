@@ -38,7 +38,7 @@
     {
         "id": 7,
         "price": 929.0,
-        "model": "RTX 3080 REV",
+        "model": "RTX3080 REV",
         "source": "/images/RTX3080REVEL.png"
     },
     {
@@ -50,7 +50,7 @@
     {
         "id": 9,
         "price": 1949.0,
-        "model": "MSI RTX3090 TI",
+        "model": "MSI3090 TI",
         "source": "/images/RTXMSI3090TI.png"
     }
  
