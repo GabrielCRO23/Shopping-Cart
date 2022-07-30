@@ -76,6 +76,7 @@ function ShoppingCart({
   return (
     <Drawer
       sx={{
+        display: { xs: "none", md: "none", lg: "none", xl: "flex" },
         zIndex: 0,
         position: "relative",
         width: "20%",
