@@ -94,11 +94,29 @@ function MobileShoppingCart({
       anchor="left"
       open={toggle}
     >
-      <Typography align="center" sx={{ marginTop: "5rem", fontWeight: "700" }}>
-        Sort By Price:
-      </Typography>
-      <Button onClick={sortProducts}>Lowest to Highest</Button>
-      <Button onClick={sortProductsReverse}>Highest to Lowest</Button>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "1rem",
+          gap: "1rem",
+        }}
+      >
+        <Typography
+          align="center"
+          sx={{ marginTop: "5rem", fontWeight: "700" }}
+        >
+          Sort By Price:
+        </Typography>
+        <button className="drawer-button" onClick={sortProducts}>
+          Lowest to Highest
+        </button>
+        <button className="drawer-button" onClick={sortProductsReverse}>
+          Highest to Lowest
+        </button>
+      </Box>
       <Divider color="white" />
       <Box
         sx={{
@@ -141,12 +159,19 @@ function MobileShoppingCart({
       <Divider color="white" />
       {models.map((model, index) => (
         <React.Fragment key={index}>
-          <Box sx={{ display: "flex" }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Button
               onClick={(event) => removeCartItem(index)}
+              sx={{ minWidth: "20px" }}
               startIcon={<HighlightOffIcon />}
             ></Button>
-            <li style={{ marginLeft: "auto" }}>
+            <li style={{ marginLeft: "auto", padding: "6px" }}>
               {model.model}
               <Button
                 onClick={(event) => addQuantity(index)}

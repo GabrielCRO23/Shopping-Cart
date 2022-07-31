@@ -91,12 +91,31 @@ function ShoppingCart({
       variant="permanent"
       anchor="left"
     >
-      <Typography align="center" sx={{ marginTop: "5rem", fontWeight: "700" }}>
-        Sort By Price:
-      </Typography>
-      <Button onClick={sortProducts}>Lowest to Highest</Button>
-      <Button onClick={sortProductsReverse}>Highest to Lowest</Button>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "1rem",
+          gap: "1rem",
+        }}
+      >
+        <Typography
+          align="center"
+          sx={{ marginTop: "5rem", fontWeight: "700" }}
+        >
+          Sort By Price:
+        </Typography>
+        <button className="drawer-button" onClick={sortProducts}>
+          Lowest to Highest
+        </button>
+        <button className="drawer-button" onClick={sortProductsReverse}>
+          Highest to Lowest
+        </button>
+      </Box>
       <Divider color="white" />
+
       <Box
         sx={{
           display: "flex",
