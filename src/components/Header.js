@@ -4,7 +4,11 @@ import Toolbar from "@mui/material/Toolbar";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Button from "@mui/material/Button";
 
-function Header({ cart }) {
+function Header({ cart, toggle, setToggle }) {
+  function toggleDrawer() {
+    setToggle(!toggle);
+  }
+
   return (
     <div>
       <AppBar
@@ -19,6 +23,7 @@ function Header({ cart }) {
         <Toolbar variant="dense">
           <Button sx={{ color: "#666666" }}>Home</Button>
           <Button sx={{ color: "#666666" }}>Products</Button>
+          <Button onClick={toggleDrawer}>TEST</Button>
           <Button
             sx={{ color: "#666666" }}
             startIcon={<ShoppingCartOutlinedIcon />}

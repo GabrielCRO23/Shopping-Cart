@@ -35,13 +35,21 @@ theme = responsiveFontSizes(theme);
 function App() {
   const [cart, setCart] = useState(0);
   const [price, setPrice] = useState(0);
+  const [toggle, setToggle] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Header cart={cart} />
+        <Header cart={cart} toggle={toggle} setToggle={setToggle} />
 
-        <Shop cart={cart} setCart={setCart} price={price} setPrice={setPrice} />
+        <Shop
+          cart={cart}
+          setCart={setCart}
+          price={price}
+          setPrice={setPrice}
+          toggle={toggle}
+          setToggle={setToggle}
+        />
       </div>
     </ThemeProvider>
   );

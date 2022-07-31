@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -12,6 +12,8 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 function ShoppingCart({
+  toggle,
+  setToggle,
   cart,
   setCart,
   price,
@@ -23,6 +25,11 @@ function ShoppingCart({
   items,
   setItems,
 }) {
+  function toggleDrawer() {
+    console.log(toggle);
+    setToggle(!toggle);
+  }
+
   function addQuantity(index) {
     setAnimation(0);
     const values = [...models];
@@ -77,19 +84,20 @@ function ShoppingCart({
   return (
     <Drawer
       sx={{
-        display: { xs: "none", md: "none", lg: "none", xl: "flex" },
+        fontSize: "12px",
         zIndex: 0,
         position: "relative",
-        width: "20%",
+        width: "100%",
         flexShrink: 0,
         "& .MuiDrawer-paper": {
           backgroundColor: "black",
           color: "white",
-          width: "20%",
+          width: "100%",
         },
       }}
-      variant="permanent"
+      variant="temporary"
       anchor="left"
+      open={toggle}
     >
       <Typography align="center" sx={{ marginTop: "5rem", fontWeight: "700" }}>
         Sort By Price:
