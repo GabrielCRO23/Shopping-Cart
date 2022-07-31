@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 
 function Header({ cart, toggle, setToggle }) {
   function toggleDrawer() {
-    setToggle(!toggle);
+    if (window.innerWidth < 1850) setToggle(!toggle);
   }
 
   return (
@@ -23,8 +23,9 @@ function Header({ cart, toggle, setToggle }) {
         <Toolbar variant="dense">
           <Button sx={{ color: "#666666" }}>Home</Button>
           <Button sx={{ color: "#666666" }}>Products</Button>
-          <Button onClick={toggleDrawer}>TEST</Button>
+
           <Button
+            onClick={toggleDrawer}
             sx={{ color: "#666666" }}
             startIcon={<ShoppingCartOutlinedIcon />}
           >

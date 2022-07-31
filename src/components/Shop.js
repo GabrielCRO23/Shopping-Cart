@@ -10,17 +10,13 @@ import Divider from "@mui/material/Divider";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-//import ShoppingCart from "./ShoppingCart";
-import ShoppingCart from "./Test";
+import ShoppingCart from "./ShoppingCart";
+import MobileShoppingCart from "./MobileShoppingCart";
 
 function Shop({ cart, setCart, price, setPrice, toggle, setToggle }) {
-  let [animation, setAnimation] = useState(0);
-
-  const [items, setItems] = useState(products);
-  const [models, setModels] = useState([]);
-
-  //setCart is for managing the number in the cart items
-  //setAnimation is for setting animation to "0", when it is set to "1" the fade animation will play.
+  const [animation, setAnimation] = useState(0); //setAnimation is for setting animation to "0", when it is set to "1" the fade animation will play. This state is passed to drawers.
+  const [items, setItems] = useState(products); //setItems is for sorting the products based on price. This state is passed to drawers.
+  const [models, setModels] = useState([]); //setModels is for displaying selected items in the cart based on their product models from the JSON file. This is state is passed to the drawers.
 
   function handleCart(event) {
     setCart(cart + 1);
@@ -35,6 +31,19 @@ function Shop({ cart, setCart, price, setPrice, toggle, setToggle }) {
     <>
       <Box sx={{ display: "flex" }}>
         <ShoppingCart
+          animation={animation}
+          setAnimation={setAnimation}
+          cart={cart}
+          setCart={setCart}
+          price={price}
+          setPrice={setPrice}
+          models={models}
+          setModels={setModels}
+          items={items}
+          setItems={setItems}
+        />
+
+        <MobileShoppingCart
           toggle={toggle}
           setToggle={setToggle}
           animation={animation}
