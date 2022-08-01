@@ -1,7 +1,0 @@
-sourced from:
-
-https://www.nvidia.com/en-gb/graphics-cards/
-
-background:
-
-https://www.xda-developers.com/nvidia-geforce-rtx-3060-ti-mid-range-gpu-launch/
