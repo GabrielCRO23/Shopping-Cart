@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import products from "../data/products.json";
+import ProductsList from "../data/ProductsList";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 
@@ -89,11 +89,14 @@ function ShoppingCart({
   // sort the products by price lowest to highest
 
   function sortProducts() {
-    setItems([...products], products.sort(sortByProperty("price")));
+    setItems([...ProductsList], ProductsList.sort(sortByProperty("price")));
   }
   // sort the products by price highest to lowest
   function sortProductsReverse() {
-    setItems([...products], products.sort(sortByProperty("price")).reverse());
+    setItems(
+      [...ProductsList],
+      ProductsList.sort(sortByProperty("price")).reverse()
+    );
   }
   return (
     <Drawer

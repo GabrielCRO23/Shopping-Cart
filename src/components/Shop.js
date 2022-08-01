@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import products from "../data/products.json";
+import ProductsList from "../data/ProductsList";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Product from "./Product";
@@ -26,7 +26,7 @@ function Shop({
   setAnimation,
 }) {
   //setAnimation is for setting animation to "0", when it is set to "1" the fade animation will play. This state is passed to drawers.
-  const [items, setItems] = useState(products); //setItems is for sorting the products based on price. This state is passed to drawers.
+  const [items, setItems] = useState(ProductsList); //setItems is for sorting the products based on price. This state is passed to drawers.
   //setModels is for displaying selected items in the cart based on their product models from the JSON file. This is state is passed to the drawers.
 
   function handleCart(event) {
@@ -79,7 +79,7 @@ function Shop({
           }}
           container
         >
-          {products.map((product, index) => (
+          {ProductsList.map((product, index) => (
             <React.Fragment key={index}>
               <Grid key={product.id} item xs={12} sm={12} md={6} lg={4}>
                 <Product {...product} />
