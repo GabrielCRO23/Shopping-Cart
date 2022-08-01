@@ -41,9 +41,9 @@ function App() {
   const [models, setModels] = useState([]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <div className="App">
-        <BrowserRouter>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <div className="App">
           <Header
             cart={cart}
             toggle={toggle}
@@ -51,8 +51,9 @@ function App() {
             animation={animation}
             setAnimation={setAnimation}
           />
+
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/shopping-cart" element={<Home />} />
             <Route
               path="/products"
               element={
@@ -71,9 +72,9 @@ function App() {
               }
             />
           </Routes>
-        </BrowserRouter>
-      </div>
-    </ThemeProvider>
+        </div>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

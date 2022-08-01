@@ -3,7 +3,7 @@
         "id": 1,
         "price": 1999.0,
         "model": "RTX3090 TI",
-        "source": "/images/RTX3090TI.png"
+        "source": "../images/RTX3090TI.png"
     },
     {
         "id": 2,

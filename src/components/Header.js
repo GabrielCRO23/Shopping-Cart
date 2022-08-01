@@ -22,7 +22,7 @@ function Header({ cart, toggle, setToggle, animation, setAnimation }) {
         }}
       >
         <Toolbar variant="dense">
-          <Link style={{ textDecoration: "none" }} to="/">
+          <Link style={{ textDecoration: "none" }} to="/shopping-cart">
             <Button sx={{ color: "#666666" }}>Home</Button>
           </Link>
           <Link style={{ textDecoration: "none" }} to="/products">
