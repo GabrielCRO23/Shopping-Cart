@@ -34,6 +34,27 @@ function MobileShoppingCart({
     setPrice(price + values[index].price);
   }
 
+  function checkOut() {
+    alert(`You have checked out! Your total is $${price}.0`);
+  }
+
+  const renderButton = () => {
+    if (models.length > 0) {
+      return (
+        <Button
+          animation={animation}
+          onClick={checkOut}
+          style={{
+            color: "white",
+            marginTop: "5rem",
+          }}
+        >
+          Proceed to Checkout
+        </Button>
+      );
+    }
+  };
+
   // takes the index of the quantity value in "models" and removes 1 to it as long as it's greater than 1. Also sets cart and price state accordingly.
   function removeQuantity(index) {
     setAnimation(0);
@@ -189,6 +210,7 @@ function MobileShoppingCart({
           </Box>
         </React.Fragment>
       ))}
+      {renderButton()}
     </Drawer>
   );
 }
