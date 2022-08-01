@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# GPU Shopping Cart
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Made by Gabriel Hrastovic.
 
-## Available Scripts
+Site is live on: https://gabrielcro23.github.io/shopping-cart/
 
-In the project directory, you can run:
+All images and color palletes are sourced from nvidia.com
 
-### `npm start`
+If you clone this repo, you must first run **npm install** to install the dependencies below, followed by **npm run start** to run it locally.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project uses:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-React & React router v6
 
-### `npm test`
+-Material UI for styled components
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project took me about 50 hours to finish. It has 2 cart components - one for mobile, and one for larger screen widths like on desktop. I added some custom breakpoints to MUI for that. Ideally I think there should be only one cart component that scales accordingly, but I wanted one to remain static and one to be a swipeable drawer. Like my last React project, I think I made some mistakes that I might refactor later when it comes to state management - for example the price state derives from the models' state and although it works fine on my app, it can be a problem in bigger projects. Some of the harder parts of making the app were coming up with the code that can sort through the JSON data (which I later just changed to a JS object because of React/webpack filepathing stuff) and I spent several hours on that. I guess understanding common sorting algorithms is important even for front end. Some other slightly more complex code I had to add was making sure that a button was disabled once an item was in the cart, regardless of where a user was navigating, and for that I had to use .some() to match the product model values with the cart models value. It was my first project using react router, and that part was simple to figure out. useEffect was used just for setting some basic CSS animation stuff.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Since E-Commerce is a big thing, knowing how to quickly make a basic shopping cart seems important.
