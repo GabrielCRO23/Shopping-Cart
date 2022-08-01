@@ -3,6 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 function Header({ cart, toggle, setToggle, animation, setAnimation }) {
   function toggleDrawer() {
@@ -21,9 +22,12 @@ function Header({ cart, toggle, setToggle, animation, setAnimation }) {
         }}
       >
         <Toolbar variant="dense">
-          <Button sx={{ color: "#666666" }}>Home</Button>
-          <Button sx={{ color: "#666666" }}>Products</Button>
-
+          <Link style={{ textDecoration: "none" }} to="/">
+            <Button sx={{ color: "#666666" }}>Home</Button>
+          </Link>
+          <Link style={{ textDecoration: "none" }} to="/products">
+            <Button sx={{ color: "#666666" }}>Products</Button>
+          </Link>
           <Button
             onClick={toggleDrawer}
             className="shopping-cart"

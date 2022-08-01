@@ -10,6 +10,7 @@ import Shop from "./components/Shop";
 import Header from "./components/Header";
 import { useState, useEffect } from "react";
 import Container from "@mui/material/Container";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 let theme = createTheme({
   palette: {
@@ -37,31 +38,67 @@ function App() {
   const [price, setPrice] = useState(0);
   const [toggle, setToggle] = useState(false);
   const [animation, setAnimation] = useState(0);
+  const [models, setModels] = useState([]);
 
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Header
-          cart={cart}
-          toggle={toggle}
-          setToggle={setToggle}
-          animation={animation}
-          setAnimation={setAnimation}
-        />
-
-        <Shop
-          animation={animation}
-          setAnimation={setAnimation}
-          cart={cart}
-          setCart={setCart}
-          price={price}
-          setPrice={setPrice}
-          toggle={toggle}
-          setToggle={setToggle}
-        />
+        <BrowserRouter>
+          <Header
+            cart={cart}
+            toggle={toggle}
+            setToggle={setToggle}
+            animation={animation}
+            setAnimation={setAnimation}
+          />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/products"
+              element={
+                <Shop
+                  models={models}
+                  setModels={setModels}
+                  animation={animation}
+                  setAnimation={setAnimation}
+                  cart={cart}
+                  setCart={setCart}
+                  price={price}
+                  setPrice={setPrice}
+                  toggle={toggle}
+                  setToggle={setToggle}
+                />
+              }
+            />
+          </Routes>
+        </BrowserRouter>
       </div>
     </ThemeProvider>
   );
 }
+
+/*
+
+ <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="users/*" element={<Users />} />
+      </Routes>
+    </BrowserRouter>
+
+
+
+     <Shop
+                  animation={animation}
+                  setAnimation={setAnimation}
+                  cart={cart}
+                  setCart={setCart}
+                  price={price}
+                  setPrice={setPrice}
+                  toggle={toggle}
+                  setToggle={setToggle}
+                />
+
+    */
 
 export default App;

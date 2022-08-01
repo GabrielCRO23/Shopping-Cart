@@ -2,6 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -22,18 +23,20 @@ function Home() {
           NVIDIA RTX™ graphics cards are bringing the power of real-time ray
           tracing and AI to the applications you use every day.
         </Typography>
-        <Button
-          sx={{
-            color: "white",
-            fontWeight: "bold",
-            borderRadius: "0px",
-            fontSize: "16px",
-          }}
-          variant="contained"
-          color="primary"
-        >
-          View Store
-        </Button>
+        <Link style={{ textDecoration: "none" }} to="/products">
+          <Button
+            sx={{
+              color: "white",
+              fontWeight: "bold",
+              borderRadius: "0px",
+              fontSize: "16px",
+            }}
+            variant="contained"
+            color="primary"
+          >
+            View Store
+          </Button>
+        </Link>
       </Box>
     </div>
   );

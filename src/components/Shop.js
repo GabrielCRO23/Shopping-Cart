@@ -14,6 +14,8 @@ import ShoppingCart from "./ShoppingCart";
 import MobileShoppingCart from "./MobileShoppingCart";
 
 function Shop({
+  models,
+  setModels,
   cart,
   setCart,
   price,
@@ -25,7 +27,7 @@ function Shop({
 }) {
   //setAnimation is for setting animation to "0", when it is set to "1" the fade animation will play. This state is passed to drawers.
   const [items, setItems] = useState(products); //setItems is for sorting the products based on price. This state is passed to drawers.
-  const [models, setModels] = useState([]); //setModels is for displaying selected items in the cart based on their product models from the JSON file. This is state is passed to the drawers.
+  //setModels is for displaying selected items in the cart based on their product models from the JSON file. This is state is passed to the drawers.
 
   function handleCart(event) {
     setCart(cart + 1);
