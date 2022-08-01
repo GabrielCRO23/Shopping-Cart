@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 
 function Header({ cart, toggle, setToggle, animation, setAnimation }) {
   function toggleDrawer() {
-    if (window.innerWidth < 1850) setToggle(!toggle);
+    if (window.innerWidth < 1850 || toggle == true) setToggle(!toggle);
   }
 
   return (
