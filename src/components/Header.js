@@ -5,7 +5,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
-function Header({ cart, toggle, setToggle, animation, setAnimation }) {
+function Header({ cart, toggle, setToggle, animation }) {
   function toggleDrawer() {
     if (window.innerWidth < 1850 || toggle == true) setToggle(!toggle);
   }

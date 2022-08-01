@@ -8,9 +8,8 @@ import {
 import Home from "./components/Home";
 import Shop from "./components/Shop";
 import Header from "./components/Header";
-import { useState, useEffect } from "react";
-import Container from "@mui/material/Container";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 let theme = createTheme({
   palette: {
@@ -33,6 +32,7 @@ let theme = createTheme({
 });
 
 theme = responsiveFontSizes(theme);
+
 function App() {
   const [cart, setCart] = useState(0);
   const [price, setPrice] = useState(0);
@@ -53,7 +53,10 @@ function App() {
           />
 
           <Routes>
-            <Route path="/shopping-cart" element={<Home />} />
+            <Route
+              path="/shopping-cart"
+              element={<Home toggle={toggle} setToggle={setToggle} />}
+            />
             <Route
               path="/products"
               element={
@@ -77,29 +80,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
-/*
-
- <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="users/*" element={<Users />} />
-      </Routes>
-    </BrowserRouter>
-
-
-
-     <Shop
-                  animation={animation}
-                  setAnimation={setAnimation}
-                  cart={cart}
-                  setCart={setCart}
-                  price={price}
-                  setPrice={setPrice}
-                  toggle={toggle}
-                  setToggle={setToggle}
-                />
-
-    */
 
 export default App;

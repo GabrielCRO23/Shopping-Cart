@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ProductsList from "../data/ProductsList";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 import Product from "./Product";
-import Drawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import ShoppingCart from "./ShoppingCart";
 import MobileShoppingCart from "./MobileShoppingCart";
 
@@ -25,9 +18,7 @@ function Shop({
   animation,
   setAnimation,
 }) {
-  //setAnimation is for setting animation to "0", when it is set to "1" the fade animation will play. This state is passed to drawers.
   const [items, setItems] = useState(ProductsList); //setItems is for sorting the products based on price. This state is passed to drawers.
-  //setModels is for displaying selected items in the cart based on their product models from the JSON file. This is state is passed to the drawers.
 
   function handleCart(event) {
     setCart(cart + 1);

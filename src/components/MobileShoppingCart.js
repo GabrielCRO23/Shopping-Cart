@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import ProductsList from "../data/ProductsList";
-import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 function MobileShoppingCart({
   toggle,
-  setToggle,
   cart,
   setCart,
   price,
@@ -22,7 +19,6 @@ function MobileShoppingCart({
   setModels,
   animation,
   setAnimation,
-  items,
   setItems,
 }) {
   function addQuantity(index) {
@@ -70,12 +66,10 @@ function MobileShoppingCart({
   function removeCartItem(index) {
     setAnimation(0);
     const values = [...models];
-
     setCart(cart - 1 * values[index].quantity);
     setPrice(price - values[index].price * values[index].quantity);
     values[index].quantity = 0;
     values.splice(index, 1);
-
     setModels(values);
   }
 

@@ -4,9 +4,7 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import ProductsList from "../data/ProductsList";
-import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
@@ -68,12 +66,10 @@ function ShoppingCart({
   function removeCartItem(index) {
     setAnimation(0);
     const values = [...models];
-
     setCart(cart - 1 * values[index].quantity);
     setPrice(price - values[index].price * values[index].quantity);
     values[index].quantity = 0;
     values.splice(index, 1);
-
     setModels(values);
   }
 

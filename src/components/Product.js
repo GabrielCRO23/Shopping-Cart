@@ -1,8 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 
-function Product({ id, price, model, source }) {
+function Product({ price, model, source }) {
   return (
     <div>
       <img

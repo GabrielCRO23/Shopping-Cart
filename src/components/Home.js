@@ -4,7 +4,10 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
-function Home() {
+function Home({ toggle, setToggle }) {
+  function toggleDrawer() {
+    if (toggle == true) setToggle(!toggle);
+  }
   return (
     <div>
       <Box
@@ -25,6 +28,7 @@ function Home() {
         </Typography>
         <Link style={{ textDecoration: "none" }} to="/products">
           <Button
+            onClick={toggleDrawer}
             sx={{
               color: "white",
               fontWeight: "bold",
