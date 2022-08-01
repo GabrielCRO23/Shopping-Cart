@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/shopping-cart/static/css/main.68d23ed5.css",
-    "main.js": "/shopping-cart/static/js/main.25382e3c.js",
+    "main.css": "/shopping-cart/static/css/main.255fbd7f.css",
+    "main.js": "/shopping-cart/static/js/main.219f7d9d.js",
     "static/media/RTXMSI3090TI.png": "/shopping-cart/static/media/RTXMSI3090TI.65fa65dfa4a88f1e456d.png",
     "static/media/RTX3070.png": "/shopping-cart/static/media/RTX3070.5ef8f54ac2b25bdd6b7d.png",
     "static/media/RTX3060TI.png": "/shopping-cart/static/media/RTX3060TI.caa3860c597d568e100e.png",
@@ -20,11 +20,11 @@
     "static/media/roboto-vietnamese-400-normal.woff2": "/shopping-cart/static/media/roboto-vietnamese-400-normal.3230f9b040f3c630e0c3.woff2",
     "static/media/roboto-greek-ext-400-normal.woff2": "/shopping-cart/static/media/roboto-greek-ext-400-normal.169619821ea93019d1bb.woff2",
     "index.html": "/shopping-cart/index.html",
-    "main.68d23ed5.css.map": "/shopping-cart/static/css/main.68d23ed5.css.map",
-    "main.25382e3c.js.map": "/shopping-cart/static/js/main.25382e3c.js.map"
+    "main.255fbd7f.css.map": "/shopping-cart/static/css/main.255fbd7f.css.map",
+    "main.219f7d9d.js.map": "/shopping-cart/static/js/main.219f7d9d.js.map"
   },
   "entrypoints": [
-    "static/css/main.68d23ed5.css",
-    "static/js/main.25382e3c.js"
+    "static/css/main.255fbd7f.css",
+    "static/js/main.219f7d9d.js"
   ]
 }
