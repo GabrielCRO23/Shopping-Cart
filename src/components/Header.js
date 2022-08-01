@@ -4,7 +4,7 @@ import Toolbar from "@mui/material/Toolbar";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Button from "@mui/material/Button";
 
-function Header({ cart, toggle, setToggle }) {
+function Header({ cart, toggle, setToggle, animation, setAnimation }) {
   function toggleDrawer() {
     if (window.innerWidth < 1850) setToggle(!toggle);
   }
@@ -26,6 +26,8 @@ function Header({ cart, toggle, setToggle }) {
 
           <Button
             onClick={toggleDrawer}
+            className="shopping-cart"
+            animation={animation}
             sx={{ color: "#666666" }}
             startIcon={<ShoppingCartOutlinedIcon />}
           >

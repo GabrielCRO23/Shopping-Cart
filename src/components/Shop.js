@@ -13,8 +13,17 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import ShoppingCart from "./ShoppingCart";
 import MobileShoppingCart from "./MobileShoppingCart";
 
-function Shop({ cart, setCart, price, setPrice, toggle, setToggle }) {
-  const [animation, setAnimation] = useState(0); //setAnimation is for setting animation to "0", when it is set to "1" the fade animation will play. This state is passed to drawers.
+function Shop({
+  cart,
+  setCart,
+  price,
+  setPrice,
+  toggle,
+  setToggle,
+  animation,
+  setAnimation,
+}) {
+  //setAnimation is for setting animation to "0", when it is set to "1" the fade animation will play. This state is passed to drawers.
   const [items, setItems] = useState(products); //setItems is for sorting the products based on price. This state is passed to drawers.
   const [models, setModels] = useState([]); //setModels is for displaying selected items in the cart based on their product models from the JSON file. This is state is passed to the drawers.
 

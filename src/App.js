@@ -36,13 +36,22 @@ function App() {
   const [cart, setCart] = useState(0);
   const [price, setPrice] = useState(0);
   const [toggle, setToggle] = useState(false);
+  const [animation, setAnimation] = useState(0);
 
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Header cart={cart} toggle={toggle} setToggle={setToggle} />
+        <Header
+          cart={cart}
+          toggle={toggle}
+          setToggle={setToggle}
+          animation={animation}
+          setAnimation={setAnimation}
+        />
 
         <Shop
+          animation={animation}
+          setAnimation={setAnimation}
           cart={cart}
           setCart={setCart}
           price={price}

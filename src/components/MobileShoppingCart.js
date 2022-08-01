@@ -161,6 +161,7 @@ function MobileShoppingCart({
         <React.Fragment key={index}>
           <Box
             sx={{
+              border: "2px solid white",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -171,7 +172,7 @@ function MobileShoppingCart({
               sx={{ minWidth: "20px" }}
               startIcon={<HighlightOffIcon />}
             ></Button>
-            <li style={{ marginLeft: "auto", padding: "6px" }}>
+            <li style={{ padding: "6px" }}>
               {model.model}
               <Button
                 onClick={(event) => addQuantity(index)}
@@ -186,7 +187,6 @@ function MobileShoppingCart({
               Quantity: {model.quantity}
             </li>
           </Box>
-          <Divider color="white" />
         </React.Fragment>
       ))}
     </Drawer>
